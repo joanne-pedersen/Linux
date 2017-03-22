@@ -1,0 +1,50 @@
+"This lab will introduce you to Linux Package Manager, user accounts, & group accts."
+
+1.) Verify that group exists.
+  cat /etc/group | grep 'users'
+  cat /etc/group | grep 'employee'
+  cat /etc/group | grep 'hr'
+  cat /etc/group | grep 'purchase'
+  cat /etc/group
+  
+2.) Verify that user exists
+  cat /etc/passwd | grep 'root'
+  cat /etc/passwd | grep fhernandez
+  cat /etc/passwd | grep alex.smith
+  cat /etc/passwd | grep esanchez
+  cat /etc/passwd
+
+3.) Create users
+  useradd -c 'Fred Hernandez' fhernandez
+    passwd fhernandez
+      [insert password here]
+  useradd -c 'Alex Smith' alex.smith
+    passwd alex.smith
+  useradd -c 'Eddie Sanchez' esanchez
+    passwd esanchez
+3.1) Verify user existance
+  cat /etc/passwd | grep 50
+3.2) Verify that the user passwords are encrypted
+  cat /etc/shadow
+  
+4.) Create groups
+  groupadd employee
+  groupadd hr
+  groupadd purchase
+4.5) Verify that groups exist
+  cat /etc/group | grep 50
+
+5. Add users to group
+  usermod -G employee fhernandez
+  usermod -G employee alex.smith
+  usermod -G employee esanchez
+  usermod -aG hr alex.smith
+  usermod -aG purchase esanchez
+5.5) Check to see which groups each user is in
+  groups fhernandez
+  groups alex.smith
+  groups esanchez
+  lid -g employee
+  lid -g hr
+  lid -g purchase
+  cat /etc/group | grep 50
